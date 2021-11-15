@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+        <!-- bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="asset/css/style.css">
+        
+        <!-- vue js -->
+        <script src="https://unpkg.com/vue@next"></script>
+        <title>UTS WEB</title>
+    </head>
+    <body>
+        <div id="app">
+            <!-- navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light px-5 shadow fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#home">
+                    <img src="asset/img/y-01.png" id="logo" width="40" height="40" id="home">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ms-auto fs-6">
+                        <li class="nav-item ms-4">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item ms-4">
+                            <a class="nav-link" href="#product">Product</a>
+                        </li>
+                        <li class="nav-item ms-4">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item ms-4 pt-1">
+                            <button type="button" class="btn bg-light position-relative">
+                                <i class="fas fa-shopping-cart fs-5"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{cart}}
+                                <span class="visually-hidden">unread messages</span>
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- end of navbar -->
+
+
+        <!-- banner -->
+        <banner-display></banner-display>
+        <!-- end of banner -->
+
+
+        <!-- content -->
+        <div class="container-fluid py-5 bg-color" id="product">
+            <p class=" py-2 text-light fs-2 fw-bold teks-center justify-content-center d-flex">PRODUCTS</p>
+            <div class="row row-cols-1 row-cols-md-3 g-4 mx-5 pb-4">
+                <product-display
+            v-for="product in items"
+            :key="product.id"
+            :product="product"
+            v-on:add-to-cart="addToCart" v-on:remove-from-cart="removeFromCart"></product-display>
+            </div>
+        </div>
+        <!-- end of content -->
+
+
+        <!-- footer -->
+        <footer-display></footer-display>
+        <!-- end of footer -->
+
+        </div>
+        
+        
+        <!-- import main.js -->
+        <script src="./main.js"></script>
+        <script src="./items.js"></script>
+
+        <!-- import components -->
+        <script src="asset/components/BannerDisplay.js"></script>
+        <script src="./asset/components/ProductDisplay.js"></script>
+        <script src="asset/components/FooterDisplay.js"></script>
+
+        <!-- mount app -->
+        <script>
+            const mountedApp = app.mount('#app')
+        </script>
+
+
+        <!-- bootsrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+    </body>
+</html>
+
